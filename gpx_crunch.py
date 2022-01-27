@@ -50,11 +50,11 @@ for f in files:
     df_list.append(f[7:-4])
 
     df = pd.DataFrame(route_info)
-    pointxyz = []
-    for i in range(0,len(df)):
-        pointxyz.append((df['latitude'][i], df['longitude'][i], df['elevation'][i]))
+    # pointxyz = []
+    # for i in range(0,len(df)):
+    #     pointxyz.append((df['latitude'][i], df['longitude'][i], df['elevation'][i]))
 
-    df['pointxyz']= pd.Series(pointxyz)
+    # df['pointxyz']= pd.Series(pointxyz)
 
     def haversine_distance(lat1, lon1, lat2, lon2) -> float:
         distance = hs.haversine(
@@ -123,7 +123,7 @@ for f in files:
 
     df.to_csv('data/route_csv/'+f[7:-4]+'.csv', index=False)
     
-df_list_dict = {'races':df_list}
-dfdf_list = pd.DataFrame(df_list_dict) 
+# df_list_dict = {'races':df_list}
+dfdf_list = pd.DataFrame({'races':df_list}) 
 dfdf_list.to_csv('data/df_list.csv', index=False)
 df_list
