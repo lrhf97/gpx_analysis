@@ -3,8 +3,6 @@ import numpy as np
 import plotly.express as px
 import streamlit as st
 
-x = st.slider('x')  # 👈 this is a widget
-st.write(x, 'squared is', x * x)
 
 df_list = pd.read_csv('data/df_list.csv')
 col_list = ['race','cum_elevation', 'cum_distance']
@@ -16,7 +14,11 @@ for r in df_list['races']:
     race_info.insert(0,'race',r)
     race_total = race_total.append(race_info, ignore_index=True)
 
-st.write(race_total['race'].unique())
+default_races = ['twot-2013', 'vickis-death-march', 'vhtrc-waterfall-50k']
+races = race_total['race'].unique()
+selected_races = st.multiselect('Select race', races, default_races)
+df3 = race_total.query('race in @selected_races')
 
-fig = px.line(race_total,x='cum_distance', y = 'cum_elevation',color ='race', title ='Elevation for races')
+
+fig = px.line(df3, x='cum_distance', y = 'cum_elevation',color ='race', title ='Elevation for races')
 st.plotly_chart(fig)
