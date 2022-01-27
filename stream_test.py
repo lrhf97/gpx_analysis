@@ -32,16 +32,7 @@ for r in df_list['races']:
 # make df of the gradient ratings
 all_race_df = pd.DataFrame.from_dict(all_race_dict,orient ='index',columns=grade_labels3)
 
-# streamlit multiselect parameters
-# default_races = ['twot-2013', 'vickis-death-march', 'vhtrc-waterfall-50k']
-# races = race_total['race'].unique()
-# selected_races = st.multiselect('Select race', races, default_races)
-# df3 = race_total.query('race in @selected_races')
-
-# fig = px.line(df3, x='cum_distance', y = 'cum_elevation',color ='race', title ='Elevation for Selected Races')
-# st.plotly_chart(fig)
-
-# st.write(all_race_df)
+# Streamlit formatting and layout
 
 st.set_page_config(layout = "wide")
 st.markdown("""# VHTRC Race Elevation Profiles...""")
