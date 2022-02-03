@@ -13,7 +13,7 @@ grade_labels3 = ['flat', 'up', 'down', 'bigUp', 'bigDown', 'Total_Distance']
 all_elev_dict ={}
 col_list = ['cum_elevation', 'cum_distance']
 
-race_total = race_total = pd.DataFrame([], columns=col_list)
+race_total = pd.DataFrame([], columns=col_list)
 for r in df_list['races']:
     rdf = pd.read_csv('data/route_csv/'+r+'.csv')
     race_info = rdf[['cum_distance','cum_elevation']]
