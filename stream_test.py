@@ -63,8 +63,8 @@ with col5:
     st.subheader("Course and mile markers ")
     default_race = [selected_races[0]]
     # races = race_total['race'].unique()
-    selected_races = st.multiselect('Select race', selected_races, default_race)[0]
-    df4 = race_total.query('race in @selected_races')
+    selected_races = st.selectbox('Select race', races)
+    df4 = race_total.loc[race_total['race']== selected_races]
 
     def find_neighbours(value, df, colname):
         exactmatch = df[df[colname] == value]
