@@ -40,7 +40,6 @@ st.markdown("""# VHTRC Race Elevation Profiles...""")
 space1,col3 = st.columns((1,30))
 
 
-
 with col3: 
     
     default_races = ['twot-2013', 'vickis-death-march', 'vhtrc-waterfall-50k']

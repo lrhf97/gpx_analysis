@@ -27,7 +27,7 @@ plt.rcParams['axes.spines.top'] = False
 plt.rcParams['axes.spines.right'] = False
 from IPython.display import display
 
-name = 'DD100K_2021'
+name = '2-loop_mtvernon'
 
 with open('Routes/my_runs/'+name+'.gpx', 'r') as gpx_file:
     route = gpxpy.parse(gpx_file)
