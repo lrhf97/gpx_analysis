@@ -125,15 +125,21 @@ with col5:
     '#a5db36',
     '#d2e21b']
 
-    # Graph mile markers on map with mile time on click - folium
+    # Generate the base map - folium
     lat_map = df4['latitude'].mean()
     lon_map = df4['longitude'].mean()
+    lat_min = df4['latitude'].min()
+    lat_max = df4['latitude'].max()
+    lon_min = df4['longitude'].min()
+    lon_max = df4['longitude'].max()
+    llbox = [[lat_min,lon_min],[lat_max,lon_max]]
+
     route_map = folium.Map(
         location=[lat_map, lon_map],
         zoom_start=12,
         tiles='OpenStreetMap',
-        width= 1000,
-        height=800
+        # width= 100%,
+        # height=1000
     )
     coordinates = [tuple(x) for x in df4[['latitude','longitude']].to_numpy()]
     folium.PolyLine(coordinates, weight=6).add_to(route_map)
@@ -169,8 +175,7 @@ with col5:
         ).add_to(route_map)
         mile+=1
 
-
-
+    route_map.fit_bounds(bounds = llbox)
     folium_static(route_map)
     ...
 
