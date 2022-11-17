@@ -29,8 +29,11 @@ from IPython.display import display
 
 # name = 'vhtrc-mmt-training-two-2021'
 
+# make list of the files
 files = glob.glob('Routes/*.gpx')
 df_list=[]
+
+# start the loop to crunch each file
 for f in files:
     with open(f, 'r') as gpx_file:
         route = gpxpy.parse(gpx_file)
@@ -50,12 +53,8 @@ for f in files:
     df_list.append(f[7:-4])
 
     df = pd.DataFrame(route_info)
-    # pointxyz = []
-    # for i in range(0,len(df)):
-    #     pointxyz.append((df['latitude'][i], df['longitude'][i], df['elevation'][i]))
 
-    # df['pointxyz']= pd.Series(pointxyz)
-
+    # Get the distance between each point and total distance
     def haversine_distance(lat1, lon1, lat2, lon2) -> float:
         distance = hs.haversine(
             point1=(lat1,lon1),
@@ -98,7 +97,7 @@ for f in files:
         return row['cum_distance']//1 +1
     df['mile_num'] = df.apply(make_mile_segments, axis=1)
 
-
+    # start the gradient calcs
     grade_cap_high = 30
     conversion_factor = 0.62137119
     gradient_point =[np.nan]
